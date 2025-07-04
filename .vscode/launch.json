@@ -1,0 +1,17 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Run Bot",
+      "request": "launch",
+      "mainClass": "engine.ChatBot",    // Replace with your actual main class
+      "classpath": [
+        "${workspaceFolder}/src",
+        "${workspaceFolder}/lib/inarabot-libs.jar",
+        "${workspaceFolder}/lib/slf4j-simple-1.7.36.jar",
+        "${workspaceFolder}/lib/commons-net-3.8.0.jar"
+      ]
+    }
+  ]
+}
