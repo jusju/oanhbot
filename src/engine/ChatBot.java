@@ -38,6 +38,35 @@ public class ChatBot extends TelegramLongPollingBot {
     }
 
     public String sanoTakaisin(String userMessage) {
+        // UUSI: /add <a> <b> -komento
+        // Sallii myös desimaalit. Jos tulos on kokonaisluku, palautetaan ilman .0-loppua.
+        if (userMessage != null && userMessage.trim().startsWith("/add")) {
+            String[] parts = userMessage.trim().split("\\s+");
+            if (parts.length == 3) {
+                try {
+                    // Yritä kokonaisluvuilla ensin
+                    long a = Long.parseLong(parts[1]);
+                    long b = Long.parseLong(parts[2]);
+                    return String.valueOf(a + b);
+                } catch (NumberFormatException nfeInt) {
+                    try {
+                        double a = Double.parseDouble(parts[1]);
+                        double b = Double.parseDouble(parts[2]);
+                        double sum = a + b;
+                        if (Math.floor(sum) == sum) {
+                            return String.valueOf((long) sum);
+                        } else {
+                            return String.valueOf(sum);
+                        }
+                    } catch (NumberFormatException nfeDbl) {
+                        return "Usage: /add <number> <number>, e.g. /add 5 2";
+                    }
+                }
+            } else {
+                return "Usage: /add <number> <number>, e.g. /add 5 2";
+            }
+        }
+
         if (userMessage.equals("/onko ohjelmointi kivaa?")) {
             return "Kyllä. Siitä saa kicksejä!";
         } else if (userMessage.equals("/who will fetch pauline today?")) {
