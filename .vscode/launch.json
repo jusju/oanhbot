@@ -3,9 +3,16 @@
   "configurations": [
     {
       "type": "java",
+      "name": "RuokalistaHaku",
+      "request": "launch",
+      "mainClass": "engine.RuokalistaHaku",
+      "projectName": "inarabot"
+    },
+    {
+      "type": "java",
       "name": "Run Bot",
       "request": "launch",
-      "mainClass": "engine.ChatBot",    // Replace with your actual main class
+      "mainClass": "engine.ChatBot",
       "classpath": [
         "${workspaceFolder}/src",
         "${workspaceFolder}/lib/inarabot-libs.jar",
